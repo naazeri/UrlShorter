@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Url>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h2>Your URLs</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Original URL</th>
+            <th>Shortened URL</th>
+            <th>Created At</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var url in Model)
+        {
+            <tr>
+                <td><a href="@url.OriginalUrl" target="_blank">@url.OriginalUrl</a></td>
+                <td><a href="/@url.ShortUrl" target="_blank">@url.ShortUrl</a></td>
+                <td>@url.CreatedAt</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="@Url.Action("Create", "Home")" class="btn btn-primary">Create New URL</a>
